@@ -286,7 +286,49 @@ namespace Scool_cash_manager
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-
+            SupprimerRecu();
+        }
+        private void SupprimerRecu()
+        {
+            if (long.TryParse(dgvliste.CurrentRow.Cells[0].Value.ToString(), out long numero_recu))
+            {
+                try
+                {
+                    using (MySqlCommand cmd = new MySqlCommand())
+                    {
+                        cmd.Connection = Connexion.con;
+                        cmd.CommandText = "delete from paiement_mensuel where id=@id";
+                        DialogResult result = MessageBox.Show($"Voulez-vous vraiment supprimer le reçu N° {numero_recu}", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        MySqlParameter p_id = new MySqlParameter("@id", MySqlDbType.Int64);
+                        p_id.Value = numero_recu;
+                        cmd.Parameters.Add(p_id);
+                        if (result == DialogResult.Yes)
+                        {
+                            int rowsAffected = cmd.ExecuteNonQuery();
+                            MessageBox.Show($"opération effectuée avec succès, {rowsAffected} ligne(s) affectées", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("conversion impossible", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void dgvliste_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvliste.Rows.Count >= 1 &&dgvliste.CurrentRow.Cells[0].Value.ToString()!="-")
+            {
+                btnAnnuler.Enabled = true;
+            }
+            else
+            {
+                btnAnnuler.Enabled = false;
+            }
         }
     }
     }
