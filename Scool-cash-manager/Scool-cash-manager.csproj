@@ -111,11 +111,11 @@
     <Compile Include="FrmAccompte.Designer.cs">
       <DependentUpon>FrmAccompte.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAccueil.cs">
+    <Compile Include="FrmMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAccueil.Designer.cs">
-      <DependentUpon>frmAccueil.cs</DependentUpon>
+    <Compile Include="FrmMenuPrincipal.Designer.cs">
+      <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmAnnulations.cs">
       <SubType>Form</SubType>
@@ -335,8 +335,8 @@
     <EmbeddedResource Include="FrmAccompte.resx">
       <DependentUpon>FrmAccompte.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAccueil.resx">
-      <DependentUpon>frmAccueil.cs</DependentUpon>
+    <EmbeddedResource Include="FrmMenuPrincipal.resx">
+      <DependentUpon>FrmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAnnulations.resx">
       <DependentUpon>FrmAnnulations.cs</DependentUpon>

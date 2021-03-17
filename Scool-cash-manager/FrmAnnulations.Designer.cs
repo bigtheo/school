@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAnnulations));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnAnnuler = new System.Windows.Forms.Button();
+            this.btnRestaurer = new System.Windows.Forms.Button();
             this.btnImprimer = new System.Windows.Forms.Button();
             this.dgvliste = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -48,7 +48,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.btnAnnuler);
+            this.panel2.Controls.Add(this.btnRestaurer);
             this.panel2.Controls.Add(this.btnImprimer);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 400);
@@ -56,21 +56,22 @@
             this.panel2.Size = new System.Drawing.Size(800, 50);
             this.panel2.TabIndex = 23;
             // 
-            // btnAnnuler
+            // btnRestaurer
             // 
-            this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(201)))));
-            this.btnAnnuler.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnAnnuler.FlatAppearance.BorderSize = 0;
-            this.btnAnnuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
-            this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnnuler.ForeColor = System.Drawing.Color.White;
-            this.btnAnnuler.Location = new System.Drawing.Point(114, 13);
-            this.btnAnnuler.MaximumSize = new System.Drawing.Size(127, 31);
-            this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(96, 26);
-            this.btnAnnuler.TabIndex = 4;
-            this.btnAnnuler.Text = "Restaurer";
-            this.btnAnnuler.UseVisualStyleBackColor = false;
+            this.btnRestaurer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(201)))));
+            this.btnRestaurer.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnRestaurer.FlatAppearance.BorderSize = 0;
+            this.btnRestaurer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
+            this.btnRestaurer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRestaurer.ForeColor = System.Drawing.Color.White;
+            this.btnRestaurer.Location = new System.Drawing.Point(114, 13);
+            this.btnRestaurer.MaximumSize = new System.Drawing.Size(127, 31);
+            this.btnRestaurer.Name = "btnRestaurer";
+            this.btnRestaurer.Size = new System.Drawing.Size(96, 26);
+            this.btnRestaurer.TabIndex = 4;
+            this.btnRestaurer.Text = "Restaurer";
+            this.btnRestaurer.UseVisualStyleBackColor = false;
+            this.btnRestaurer.Click += new System.EventHandler(this.btnRestaurer_Click);
             // 
             // btnImprimer
             // 
@@ -129,6 +130,7 @@
             this.dgvliste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvliste.Size = new System.Drawing.Size(800, 328);
             this.dgvliste.TabIndex = 24;
+            this.dgvliste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvliste_CellContentClick);
             // 
             // panel1
             // 
@@ -229,7 +231,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.Button btnRestaurer;
         private System.Windows.Forms.Button btnImprimer;
         private System.Windows.Forms.DataGridView dgvliste;
         private System.Windows.Forms.Panel panel1;
