@@ -62,6 +62,7 @@
             this.panelLogo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelConteneur = new System.Windows.Forms.Panel();
+            this.BtnAnnulations = new System.Windows.Forms.Button();
             this.panelSlideMenu.SuspendLayout();
             this.panelSousMenuJournal.SuspendLayout();
             this.panelSousMenuSolvabilite.SuspendLayout();
@@ -101,7 +102,7 @@
             this.BtnEnseignat.ForeColor = System.Drawing.Color.Black;
             this.BtnEnseignat.Image = ((System.Drawing.Image)(resources.GetObject("BtnEnseignat.Image")));
             this.BtnEnseignat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnEnseignat.Location = new System.Drawing.Point(0, 944);
+            this.BtnEnseignat.Location = new System.Drawing.Point(0, 976);
             this.BtnEnseignat.Margin = new System.Windows.Forms.Padding(4);
             this.BtnEnseignat.Name = "BtnEnseignat";
             this.BtnEnseignat.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
@@ -122,7 +123,7 @@
             this.btnParametre.ForeColor = System.Drawing.Color.Black;
             this.btnParametre.Image = ((System.Drawing.Image)(resources.GetObject("btnParametre.Image")));
             this.btnParametre.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnParametre.Location = new System.Drawing.Point(0, 904);
+            this.btnParametre.Location = new System.Drawing.Point(0, 936);
             this.btnParametre.Margin = new System.Windows.Forms.Padding(4);
             this.btnParametre.Name = "btnParametre";
             this.btnParametre.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
@@ -137,6 +138,7 @@
             // panelSousMenuJournal
             // 
             this.panelSousMenuJournal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.panelSousMenuJournal.Controls.Add(this.BtnAnnulations);
             this.panelSousMenuJournal.Controls.Add(this.BntEcheance);
             this.panelSousMenuJournal.Controls.Add(this.btnJournalFrais);
             this.panelSousMenuJournal.Controls.Add(this.btnJournalCentralise);
@@ -144,7 +146,7 @@
             this.panelSousMenuJournal.Location = new System.Drawing.Point(0, 792);
             this.panelSousMenuJournal.Margin = new System.Windows.Forms.Padding(4);
             this.panelSousMenuJournal.Name = "panelSousMenuJournal";
-            this.panelSousMenuJournal.Size = new System.Drawing.Size(223, 112);
+            this.panelSousMenuJournal.Size = new System.Drawing.Size(223, 144);
             this.panelSousMenuJournal.TabIndex = 8;
             // 
             // BntEcheance
@@ -632,6 +634,23 @@
             this.panelConteneur.Size = new System.Drawing.Size(819, 573);
             this.panelConteneur.TabIndex = 2;
             // 
+            // BtnAnnulations
+            // 
+            this.BtnAnnulations.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnAnnulations.FlatAppearance.BorderSize = 0;
+            this.BtnAnnulations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAnnulations.ForeColor = System.Drawing.Color.Black;
+            this.BtnAnnulations.Location = new System.Drawing.Point(0, 105);
+            this.BtnAnnulations.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnAnnulations.Name = "BtnAnnulations";
+            this.BtnAnnulations.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
+            this.BtnAnnulations.Size = new System.Drawing.Size(223, 35);
+            this.BtnAnnulations.TabIndex = 7;
+            this.BtnAnnulations.Text = "Annulations";
+            this.BtnAnnulations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAnnulations.UseVisualStyleBackColor = true;
+            this.BtnAnnulations.Click += new System.EventHandler(this.BtnAnnulations_Click);
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -691,6 +710,7 @@
         private System.Windows.Forms.Button BntEcheance;
         private System.Windows.Forms.Button BtnAccompte;
         private System.Windows.Forms.Button BtnEnseignat;
+        private System.Windows.Forms.Button BtnAnnulations;
     }
 }
 

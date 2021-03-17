@@ -277,12 +277,16 @@ namespace Scool_cash_manager
             this.Cursor = Cursors.Default;
             new FrmApercuAvantImpression().Show();
         }
-  
-
-            
-            #endregion
 
 
-          
+
+
+
+        #endregion
+
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+
         }
+    }
     }

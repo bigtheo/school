@@ -235,5 +235,11 @@ namespace Scool_cash_manager
             CacherSousMenu();
 
         }
+
+        private void BtnAnnulations_Click(object sender, EventArgs e)
+        {
+            OuvrirFormulaire(new FrmAnnulations());
+            CacherSousMenu();
+        }
     }
 }
