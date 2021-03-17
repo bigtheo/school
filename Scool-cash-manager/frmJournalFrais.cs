@@ -102,7 +102,7 @@ namespace Scool_cash_manager
         {
             ListerPaiementsJouralier();
         }
-
+        #region impression de la liste
         private void BtnImprimer_Click(object sender, EventArgs e)
         {
 
@@ -283,10 +283,12 @@ namespace Scool_cash_manager
 
 
         #endregion
-
-        private void btnAnnuler_Click(object sender, EventArgs e)
+        #endregion
+        #region annulation de l'opération
+        private void BtnAnnuler_Click(object sender, EventArgs e)
         {
             SupprimerRecu();
+            ListerPaiementsJouralier();
         }
         private void SupprimerRecu()
         {
@@ -319,7 +321,7 @@ namespace Scool_cash_manager
                 MessageBox.Show("conversion impossible", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void dgvliste_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Dgvliste_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvliste.Rows.Count >= 1 &&dgvliste.CurrentRow.Cells[0].Value.ToString()!="-")
             {
@@ -330,5 +332,6 @@ namespace Scool_cash_manager
                 btnAnnuler.Enabled = false;
             }
         }
+        #endregion
     }
-    }
+}

@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace Scool_cash_manager
 {
-    public partial class frmMenuPrincipal : Form
+    public partial class FrmMenuPrincipal : Form
     {
-        public frmMenuPrincipal()
+        public FrmMenuPrincipal()
         {
             InitializeComponent();
             CustomizerDesign();

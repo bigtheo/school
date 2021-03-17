@@ -1,6 +1,6 @@
 ﻿namespace Scool_cash_manager
 {
-    partial class frmMenuPrincipal
+    partial class FrmMenuPrincipal
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuPrincipal));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenuPrincipal));
             this.panelSlideMenu = new System.Windows.Forms.Panel();
             this.BtnEnseignat = new System.Windows.Forms.Button();
             this.btnParametre = new System.Windows.Forms.Button();

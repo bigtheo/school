@@ -120,14 +120,14 @@
             this.dgvliste.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvliste.EnableHeadersVisualStyles = false;
             this.dgvliste.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dgvliste.Location = new System.Drawing.Point(0, 72);
+            this.dgvliste.Location = new System.Drawing.Point(0, 66);
             this.dgvliste.MultiSelect = false;
             this.dgvliste.Name = "dgvliste";
             this.dgvliste.ReadOnly = true;
             this.dgvliste.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(3);
             this.dgvliste.RowTemplate.Height = 45;
             this.dgvliste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvliste.Size = new System.Drawing.Size(800, 322);
+            this.dgvliste.Size = new System.Drawing.Size(800, 328);
             this.dgvliste.TabIndex = 24;
             // 
             // panel1
@@ -217,6 +217,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmAnnulations";
             this.Text = "Les annulations";
+            this.Load += new System.EventHandler(this.FrmAnnulations_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvliste)).EndInit();
             this.panel1.ResumeLayout(false);

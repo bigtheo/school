@@ -13,7 +13,7 @@ namespace Scool_cash_manager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMenuPrincipal());
+            Application.Run(new FrmMenuPrincipal());
         }
     }
 }

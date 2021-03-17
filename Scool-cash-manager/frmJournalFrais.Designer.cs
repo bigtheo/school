@@ -202,7 +202,7 @@
             this.dgvliste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvliste.Size = new System.Drawing.Size(800, 335);
             this.dgvliste.TabIndex = 23;
-            this.dgvliste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvliste_CellContentClick);
+            this.dgvliste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgvliste_CellContentClick);
             // 
             // btnAnnuler
             // 
@@ -220,7 +220,7 @@
             this.btnAnnuler.TabIndex = 4;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = false;
-            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
+            this.btnAnnuler.Click += new System.EventHandler(this.BtnAnnuler_Click);
             // 
             // FrmJournalFrais
             // 
