@@ -39,6 +39,7 @@
             this.btnNouveau = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
             this.dgvliste = new System.Windows.Forms.DataGridView();
+            this.btnAnnuler = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvliste)).BeginInit();
@@ -69,6 +70,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnAnnuler);
             this.panel2.Controls.Add(this.btnImprimer);
             this.panel2.Controls.Add(this.btnDetails);
             this.panel2.Controls.Add(this.btnNouveau);
@@ -180,6 +182,22 @@
             this.dgvliste.Size = new System.Drawing.Size(819, 485);
             this.dgvliste.TabIndex = 26;
             // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnAnnuler.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnAnnuler.FlatAppearance.BorderSize = 0;
+            this.btnAnnuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
+            this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnnuler.ForeColor = System.Drawing.Color.White;
+            this.btnAnnuler.Location = new System.Drawing.Point(317, 12);
+            this.btnAnnuler.MaximumSize = new System.Drawing.Size(127, 31);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(96, 26);
+            this.btnAnnuler.TabIndex = 30;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = false;
+            // 
             // frmFraisExamen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -213,5 +231,6 @@
         private System.Windows.Forms.Button btnNouveau;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.DataGridView dgvliste;
+        private System.Windows.Forms.Button btnAnnuler;
     }
 }

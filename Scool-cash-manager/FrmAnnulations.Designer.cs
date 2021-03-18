@@ -130,7 +130,7 @@
             this.dgvliste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvliste.Size = new System.Drawing.Size(800, 328);
             this.dgvliste.TabIndex = 24;
-            this.dgvliste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvliste_CellContentClick);
+            this.dgvliste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgvliste_CellContentClick);
             // 
             // panel1
             // 

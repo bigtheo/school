@@ -85,7 +85,7 @@ namespace Scool_cash_manager
             ListerAnnulations();
         }
 
-        private void dgvliste_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Dgvliste_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvliste.Rows.Count >= 0)
             {
