@@ -43,11 +43,11 @@ namespace Scool_cash_manager
                     Value = dgvliste.CurrentRow.Cells[0].Value
                 };
                 cmd.Parameters.Add(p_id);
-                DialogResult result = MessageBox.Show($"Voulez-vous vraiment annuler le reçu numéro {p_id.Value}", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ;
+                DialogResult result = MessageBox.Show($"Voulez-vous vraiment annuler le reçu numéro {p_id.Value} ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ;
                 if (result == DialogResult.Yes)
                 {
                     int RowsAffected = cmd.ExecuteNonQuery();
-                    MessageBox.Show($"Voulez-vous vraiment annuler le reçu numéro {p_id.Value}", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Opération effectuée avec succès, \n {RowsAffected} ligne(s) affectée(s)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

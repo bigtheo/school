@@ -40,6 +40,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtp_date = new System.Windows.Forms.DateTimePicker();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.btnAnnuler = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvliste)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -86,9 +87,11 @@
             this.dgvliste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvliste.Size = new System.Drawing.Size(819, 477);
             this.dgvliste.TabIndex = 22;
+            this.dgvliste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvliste_CellContentClick);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnAnnuler);
             this.panel2.Controls.Add(this.btnImprimer);
             this.panel2.Controls.Add(this.btnNouveau);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -189,6 +192,24 @@
             this.lblMessage.Text = "Aucune Infromation trouvée";
             this.lblMessage.Visible = false;
             // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnAnnuler.Enabled = false;
+            this.btnAnnuler.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnAnnuler.FlatAppearance.BorderSize = 0;
+            this.btnAnnuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
+            this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnnuler.ForeColor = System.Drawing.Color.White;
+            this.btnAnnuler.Location = new System.Drawing.Point(210, 12);
+            this.btnAnnuler.MaximumSize = new System.Drawing.Size(127, 31);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(96, 26);
+            this.btnAnnuler.TabIndex = 5;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = false;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
+            // 
             // FrmAccompte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,5 +243,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DateTimePicker dtp_date;
         private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.Button btnAnnuler;
     }
 }

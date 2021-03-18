@@ -28,6 +28,14 @@ namespace Scool_cash_manager
 
         private void C(object sender, DataGridViewCellEventArgs e)
         {
+            if (DGVPossedeUnEnregistrement())
+            {
+                btnAnnuler.Enabled = true;
+            }
+            else
+            {
+                btnAnnuler.Enabled = false;
+            }
         }
 
         private void FrmFraisEtat_Load(object sender, EventArgs e)
@@ -233,6 +241,35 @@ namespace Scool_cash_manager
         private void Cbx_classe_SelectedIndexChanged(object sender, EventArgs e)
         {
             AfficherToutPaiementParClasse();
+        }
+
+        private void AnnulerUnFraisEtat()
+        {
+            using (MySqlCommand cmd = new MySqlCommand())
+            {
+                cmd.Connection = Connexion.con;
+                cmd.CommandText = "Delete from paiement_etat where id=@id";
+                MySqlParameter p_id = new MySqlParameter("@id", MySqlDbType.Int64)
+                {
+                    Value = dgvliste.CurrentRow.Cells[0].Value
+                };
+                cmd.Parameters.Add(p_id);
+                DialogResult result = MessageBox.Show($"Voulez-vous vraiment annuler le reçu numéro {p_id.Value} ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    int RowsAffected = cmd.ExecuteNonQuery();
+                    MessageBox.Show($"Opération effectuée avec succès, \n {RowsAffected} ligne(s) affectée(s)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+        private bool DGVPossedeUnEnregistrement()
+        {
+            return dgvliste.Rows.Count > 0;
+        }
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            AnnulerUnFraisEtat();
+            AfficherToutPaiemenFraisEtat();
         }
     }
 }

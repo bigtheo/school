@@ -35,11 +35,11 @@ namespace Scool_cash_manager
         }
         #endregion
 
+        #region opérations basique ur l'accompte
         private void BtnNouveau_Click(object sender, EventArgs e)
         {
             new FrmNouvelAccompte().ShowDialog();
         }
-
         private void ListerAccompteParDate()
         {
             using (MySqlCommand cmd=new MySqlCommand ())
@@ -62,7 +62,6 @@ namespace Scool_cash_manager
                 }
             }
         }
-
         private void Dtp_date_ValueChanged(object sender, EventArgs e)
         {
             ListerAccompteVerifie();
@@ -196,7 +195,6 @@ namespace Scool_cash_manager
             this.Cursor = Cursors.Default;
             new FrmApercuAvantImpression().Show();
         }
-
         private Decimal GetTotalAccompte()
         {
             using (MySqlCommand cmd=new MySqlCommand ())
@@ -221,5 +219,52 @@ namespace Scool_cash_manager
         {
             Imprimer();
         }
+        #endregion
+
+        #region annulation des opération
+        private bool DGVPossedeUnEnregistrement()
+        {
+            return dgvliste.Rows.Count > 0;
+        }
+        private void AnnulerPaiementAccompte()
+        {
+            using (MySqlCommand cmd = new MySqlCommand())
+            {
+                cmd.Connection = Connexion.con;
+                cmd.CommandText = "Delete from accompte where id=@id";
+                MySqlParameter p_id = new MySqlParameter("@id", MySqlDbType.Int64)
+                {
+                    Value = dgvliste.CurrentRow.Cells[0].Value
+                };
+                cmd.Parameters.Add(p_id);
+                DialogResult result = MessageBox.Show($"Voulez-vous vraiment annuler l'accompte numéro {p_id.Value} ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    int RowsAffected = cmd.ExecuteNonQuery();
+                    MessageBox.Show($"Opération effectuée avec succès, \n {RowsAffected} ligne(s) affectée(s)", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            AnnulerPaiementAccompte();
+            ListerAccompteVerifie();
+        }
+ 
+
+        private void dgvliste_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DGVPossedeUnEnregistrement())
+            {
+                btnAnnuler.Enabled = true;
+            }
+            else
+            {
+                btnAnnuler.Enabled = false;
+            }
+        }
+        #endregion
     }
 }
