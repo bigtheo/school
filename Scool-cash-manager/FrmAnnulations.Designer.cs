@@ -188,13 +188,14 @@
             "Frais mensuel",
             "Frais examen",
             "Frais examen d\'état",
-            "Manuels",
-            "Frais de l\'état"});
+            "Frais de l\'état",
+            "Accomptes"});
             this.cbx_frais.Location = new System.Drawing.Point(698, 8);
             this.cbx_frais.Name = "cbx_frais";
             this.cbx_frais.Size = new System.Drawing.Size(94, 23);
             this.cbx_frais.TabIndex = 3;
             this.cbx_frais.Text = "Frais mensuel";
+            this.cbx_frais.SelectedIndexChanged += new System.EventHandler(this.cbx_frais_SelectedIndexChanged);
             // 
             // label1
             // 
