@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvliste = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnImprimer = new System.Windows.Forms.Button();
             this.btnNouveau = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dtp_date = new System.Windows.Forms.DateTimePicker();
             this.lblMessage = new System.Windows.Forms.Label();
-            this.btnAnnuler = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvliste)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -99,6 +99,24 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(819, 51);
             this.panel2.TabIndex = 21;
+            // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnAnnuler.Enabled = false;
+            this.btnAnnuler.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnAnnuler.FlatAppearance.BorderSize = 0;
+            this.btnAnnuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
+            this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnnuler.ForeColor = System.Drawing.Color.White;
+            this.btnAnnuler.Location = new System.Drawing.Point(210, 12);
+            this.btnAnnuler.MaximumSize = new System.Drawing.Size(127, 31);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(96, 26);
+            this.btnAnnuler.TabIndex = 5;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = false;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // btnImprimer
             // 
@@ -191,24 +209,6 @@
             this.lblMessage.TabIndex = 23;
             this.lblMessage.Text = "Aucune Infromation trouvée";
             this.lblMessage.Visible = false;
-            // 
-            // btnAnnuler
-            // 
-            this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnAnnuler.Enabled = false;
-            this.btnAnnuler.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnAnnuler.FlatAppearance.BorderSize = 0;
-            this.btnAnnuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
-            this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnnuler.ForeColor = System.Drawing.Color.White;
-            this.btnAnnuler.Location = new System.Drawing.Point(210, 12);
-            this.btnAnnuler.MaximumSize = new System.Drawing.Size(127, 31);
-            this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(96, 26);
-            this.btnAnnuler.TabIndex = 5;
-            this.btnAnnuler.Text = "Annuler";
-            this.btnAnnuler.UseVisualStyleBackColor = false;
-            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // FrmAccompte
             // 
