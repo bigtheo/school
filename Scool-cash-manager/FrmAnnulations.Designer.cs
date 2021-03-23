@@ -40,7 +40,7 @@
             this.dtp_date = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.cbx_frais = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvliste)).BeginInit();
             this.panel1.SuspendLayout();
@@ -71,7 +71,7 @@
             this.btnRestaurer.TabIndex = 4;
             this.btnRestaurer.Text = "Restaurer";
             this.btnRestaurer.UseVisualStyleBackColor = false;
-            this.btnRestaurer.Click += new System.EventHandler(this.btnRestaurer_Click);
+            this.btnRestaurer.Click += new System.EventHandler(this.BtnRestaurer_Click);
             // 
             // btnImprimer
             // 
@@ -139,7 +139,7 @@
             this.panel1.Controls.Add(this.dtp_date);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cbx_frais);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblMessage);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -167,6 +167,7 @@
             this.dtp_date.Name = "dtp_date";
             this.dtp_date.Size = new System.Drawing.Size(94, 25);
             this.dtp_date.TabIndex = 5;
+            this.dtp_date.ValueChanged += new System.EventHandler(this.Dtp_date_ValueChanged);
             // 
             // label2
             // 
@@ -195,19 +196,19 @@
             this.cbx_frais.Size = new System.Drawing.Size(94, 23);
             this.cbx_frais.TabIndex = 3;
             this.cbx_frais.Text = "Frais mensuel";
-            this.cbx_frais.SelectedIndexChanged += new System.EventHandler(this.cbx_frais_SelectedIndexChanged);
+            this.cbx_frais.SelectedIndexChanged += new System.EventHandler(this.Cbx_frais_SelectedIndexChanged);
             // 
-            // label1
+            // lblMessage
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 32);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Les annulations";
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblMessage.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.ForeColor = System.Drawing.Color.Black;
+            this.lblMessage.Location = new System.Drawing.Point(0, 0);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(180, 32);
+            this.lblMessage.TabIndex = 2;
+            this.lblMessage.Text = "Les annulations";
             // 
             // FrmAnnulations
             // 
@@ -240,6 +241,6 @@
         private System.Windows.Forms.DateTimePicker dtp_date;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbx_frais;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblMessage;
     }
 }

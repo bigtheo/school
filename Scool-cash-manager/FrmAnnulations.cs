@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Scool_cash_manager
@@ -16,20 +10,24 @@ namespace Scool_cash_manager
         public FrmAnnulations()
         {
             InitializeComponent();
-
         }
+
         private void FrmAnnulations_Load(object sender, EventArgs e)
         {
-            ListerAnnulationsMensuel();
+            ListerPaiement();
+            MasquerBoutonRestaurer();
         }
+
         #region Lister les annualations
 
         private void ListerAnnulationsMensuel()
         {
             using (MySqlCommand cmd = new MySqlCommand())
             {
+                Connexion.connecter();
                 cmd.Connection = Connexion.con;
-                cmd.CommandText = "select p.id as 'N° reçu',p.date_paie as 'Date de la paie',p.date_paie_suppression as 'Date Suppresion',concat_ws(' ',e.nom,e.postnom,e.prenom) as Noms,f.Montant from paiement_mensuel_archive as p " +
+                cmd.CommandText = "select p.id as 'N° reçu',p.date_paie as 'Date de la paie',p.date_paie_suppression as 'Date Suppresion',concat_ws(' ',e.nom,e.postnom,e.prenom) as Noms,f.Montant " +
+                    ",f.designation from paiement_mensuel_archive as p " +
                     " inner join eleve as e on e.id = p.eleve_id " +
                     " inner join frais_mensuel as f on f.id=p.frais_mensuel_id " +
                     " where date(date_paie_suppression)=@dateAnnulation";
@@ -44,19 +42,21 @@ namespace Scool_cash_manager
                     adapter.Fill(table);
                     dgvliste.DataSource = table;
                 }
-
             }
+        }
 
-
-        } 
         private void ListerAnnulationsEtat()
         {
             using (MySqlCommand cmd = new MySqlCommand())
             {
+                Connexion.connecter();
                 cmd.Connection = Connexion.con;
-                cmd.CommandText = "select p.id as 'N° reçu',p.date_paie as 'Date de la paie',p.date_annulation as 'Date Suppresion',concat_ws(' ',e.nom,e.postnom,e.prenom) as Noms,f.Montant from paiement_etat_archive as p " +
+                cmd.CommandText = "select p.id as 'N° reçu',p.date_paie as 'Date de la paie'," +
+                    " p.date_annulation as 'Date Suppresion',concat_ws(' ', e.nom, e.postnom, e.prenom) as Noms," +
+                    " f.Montant,fe.designation from paiement_etat_archive as p " +
                     " inner join eleve as e on e.id = p.eleve_id " +
-                    " inner join classe_frais_etat as f on f.id=p.frais_etat_id " +
+                    " inner join classe_frais_etat as f on f.id = p.frais_etat_id " +
+                    " inner join frais_etat as fe on fe.id = f.frais_etat_id" +
                     " where date(p.date_annulation)=@dateAnnulation";
                 MySqlParameter p_date = new MySqlParameter("@dateAnnulation", MySqlDbType.Date)
                 {
@@ -69,20 +69,23 @@ namespace Scool_cash_manager
                     adapter.Fill(table);
                     dgvliste.DataSource = table;
                 }
-               
             }
-
-
         }
+
         private void ListerAnnulationsExetat()
         {
             using (MySqlCommand cmd = new MySqlCommand())
             {
+                Connexion.connecter();
                 cmd.Connection = Connexion.con;
-                cmd.CommandText = "select p.id as 'N° reçu',p.date_paie as 'Date de la paie',p.date_paie_suppression as 'Date Suppresion',concat_ws(' ',e.nom,e.postnom,e.prenom) as Noms,f.Montant from paiement_mensuel_archive as p " +
+                cmd.CommandText = "select p.id as 'N° reçu',p.date_paie as 'Date de la paie'," +
+                    " p.date_Annulation as 'Date Suppresion' " +
+                    " ,concat_ws(' ', e.nom, e.postnom, e.prenom) as Noms,cfe.montant," +
+                    " f.designation from paiement_exetat_archive as p " +
                     " inner join eleve as e on e.id = p.eleve_id " +
-                    " inner join frais_mensuel as f on f.id=p.frais_mensuel_id " +
-                    " where date(date_paie_suppression)=@dateAnnulation";
+                    " inner join frais_exetat as f on f.id = p.frais_exetat_id " +
+                    " inner join classe_frais_exetat as cfe on f.id = cfe.frais_exetat_id " +
+                    " where date(p.date_Annulation)=@dateAnnulation";
                 MySqlParameter p_date = new MySqlParameter("@dateAnnulation", MySqlDbType.Date)
                 {
                     Value = dtp_date.Value
@@ -94,20 +97,23 @@ namespace Scool_cash_manager
                     adapter.Fill(table);
                     dgvliste.DataSource = table;
                 }
-
             }
-
-
         }
+
         private void ListerAnnulationsExamen()
         {
             using (MySqlCommand cmd = new MySqlCommand())
             {
+                Connexion.connecter();
                 cmd.Connection = Connexion.con;
-                cmd.CommandText = "select p.id as 'N° reçu',p.date_paie as 'Date de la paie',p.date_paie_suppression as 'Date Suppresion',concat_ws(' ',e.nom,e.postnom,e.prenom) as Noms,f.Montant from paiement_mensuel_archive as p " +
-                    " inner join eleve as e on e.id = p.eleve_id " +
-                    " inner join frais_mensuel as f on f.id=p.frais_mensuel_id " +
-                    " where date(date_paie_suppression)=@dateAnnulation";
+                cmd.CommandText = "select p.id as 'N° reçu',p.date_paie as 'Date de la paie'," +
+                   " p.date_Annulation as 'Date Suppresion',concat_ws(' ', e.nom, e.postnom, e.prenom) as Noms," +
+                   " cfe.Montant,f.designation " +
+                   " from paiement_examen_archive as p " +
+                   " inner join eleve as e on e.id = p.eleve_id " +
+                   " inner join frais_examen as f on f.id = p.frais_examen_id " +
+                   " INNER JOIN classe_frais_exetat as cfe on cfe.id = p.frais_examen_id " +
+                   " where date(date_Annulation)=@dateAnnulation";
                 MySqlParameter p_date = new MySqlParameter("@dateAnnulation", MySqlDbType.Date)
                 {
                     Value = dtp_date.Value
@@ -119,17 +125,20 @@ namespace Scool_cash_manager
                     adapter.Fill(table);
                     dgvliste.DataSource = table;
                 }
-
             }
-
-
         }
+
         private void ListerAnnulationsAccompte()
         {
             using (MySqlCommand cmd = new MySqlCommand())
             {
+                Connexion.connecter();
                 cmd.Connection = Connexion.con;
-                cmd.CommandText = "select p.id as 'N° reçu',p.date_paie as 'Date de la paie',p.date_paie_suppression as 'Date Suppresion',concat_ws(' ',e.nom,e.postnom,e.prenom) as Noms,f.Montant from paiement_mensuel_archive as p " +
+                cmd.CommandText = "select p.id as 'N° reçu',p.date_paie as 'Date de la paie',p.date_paie_suppression as 'Date Suppresion'," +
+                    "concat_ws(' ',e.nom,e.postnom,e.prenom) as Noms," +
+                    "f.Montant" +
+                    ", f.Designation" +
+                    " from paiement_mensuel_archive as p " +
                     " inner join eleve as e on e.id = p.eleve_id " +
                     " inner join frais_mensuel as f on f.id=p.frais_mensuel_id " +
                     " where date(date_paie_suppression)=@dateAnnulation";
@@ -144,10 +153,7 @@ namespace Scool_cash_manager
                     adapter.Fill(table);
                     dgvliste.DataSource = table;
                 }
-
             }
-
-
         }
 
         private void ListerPaiement()
@@ -156,28 +162,40 @@ namespace Scool_cash_manager
             {
                 case 0:
                     ListerAnnulationsMensuel();
+                    lblMessage.Text = "Les annulations-Frais mensuel";
                     break;
+
                 case 1:
                     ListerAnnulationsExamen();
+                    lblMessage.Text = "Les annulations-Frais examen";
                     break;
+
                 case 2:
                     ListerAnnulationsExetat();
+                    lblMessage.Text = "Les annulations-Frais exetat";
                     break;
+
                 case 3:
                     ListerAnnulationsEtat();
+                    lblMessage.Text = "Les annulations-Frais de l'état";
                     break;
+
                 case 4:
                     ListerAnnulationsAccompte();
+                    lblMessage.Text = "Les annulations-Accomptes";
                     break;
+
                 default:
-                    MessageBox.Show("Veuillez selectionner le frais","Information",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    MessageBox.Show("Veuillez selectionner le frais", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     break;
             }
         }
-        #endregion
+
+        #endregion Lister les annualations
 
         #region Restauration
-        private void SupprimerRecu()
+
+        private void RestaurerPaiement(string table)
         {
             if (long.TryParse(dgvliste.CurrentRow.Cells[0].Value.ToString(), out long numero_recu))
             {
@@ -186,10 +204,12 @@ namespace Scool_cash_manager
                     using (MySqlCommand cmd = new MySqlCommand())
                     {
                         cmd.Connection = Connexion.con;
-                        cmd.CommandText = "delete from paiement_mensuel_archive where id=@id";
+                        cmd.CommandText = $"delete from {table} where id=@id";
                         DialogResult result = MessageBox.Show($"Voulez-vous vraiment restaurer le reçu N° {numero_recu}", "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        MySqlParameter p_id = new MySqlParameter("@id", MySqlDbType.Int64);
-                        p_id.Value = numero_recu;
+                        MySqlParameter p_id = new MySqlParameter("@id", MySqlDbType.Int64)
+                        {
+                            Value = numero_recu
+                        };
                         cmd.Parameters.Add(p_id);
                         if (result == DialogResult.Yes)
                         {
@@ -208,10 +228,37 @@ namespace Scool_cash_manager
                 MessageBox.Show("conversion impossible", "Information", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void btnRestaurer_Click(object sender, EventArgs e)
+
+        private void BtnRestaurer_Click(object sender, EventArgs e)
         {
-            SupprimerRecu();
-            ListerAnnulationsMensuel();
+            Restaurer();
+            ListerPaiement();
+        }
+        private void Restaurer()
+        {
+            switch (cbx_frais.SelectedIndex)
+            {
+                case 0:
+                    RestaurerPaiement("paiement_mensuel_archive");
+                    break;
+                case 1:
+                    ListerAnnulationsExamen();
+                    RestaurerPaiement("paiement_examen_archive");
+                    break;
+                case 2:
+                    RestaurerPaiement("paiement_exetat_archive");
+                    break;
+                case 3:
+                    RestaurerPaiement("paiement_etat_archive");
+                    break;
+                case 4:
+                    RestaurerPaiement("accompte_archive");
+                    break;
+
+                default:
+                    MessageBox.Show("Veuillez selectionner le frais", "Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+            }
         }
         private void Dgvliste_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -224,11 +271,29 @@ namespace Scool_cash_manager
                 btnRestaurer.Enabled = false;
             }
         }
-        #endregion
+        private void MasquerBoutonRestaurer()
+        {
+            if (dgvliste.Rows.Count > 0)
+            {
+                btnRestaurer.Enabled = true;
+            }
+            else
+            {
+                btnRestaurer.Enabled = false;
+            }
+        }
+        #endregion Restauration
 
-        private void cbx_frais_SelectedIndexChanged(object sender, EventArgs e)
+        private void Cbx_frais_SelectedIndexChanged(object sender, EventArgs e)
         {
             ListerPaiement();
+            MasquerBoutonRestaurer();
+        }
+
+        private void Dtp_date_ValueChanged(object sender, EventArgs e)
+        {
+            ListerPaiement();
+            MasquerBoutonRestaurer();
         }
     }
 }
