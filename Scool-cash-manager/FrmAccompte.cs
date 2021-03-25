@@ -254,7 +254,7 @@ namespace Scool_cash_manager
         }
  
 
-        private void dgvliste_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Dgvliste_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (DGVPossedeUnEnregistrement())
             {
