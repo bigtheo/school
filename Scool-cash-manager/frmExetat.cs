@@ -55,6 +55,7 @@ namespace Scool_cash_manager
                     else
                     {
                         dgvliste.Show();
+                        lblMessage.Hide();
                     }
                 }
 
