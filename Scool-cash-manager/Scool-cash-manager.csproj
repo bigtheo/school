@@ -327,6 +327,12 @@
     <Compile Include="FrmVuDensemble.Designer.cs">
       <DependentUpon>FrmVuDensemble.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListeItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListeItem.Designer.cs">
+      <DependentUpon>ListeItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations.cs" />
     <Compile Include="PDFBackgroundHelper.cs" />
     <Compile Include="Program.cs" />
@@ -442,6 +448,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmVuDensemble.resx">
       <DependentUpon>FrmVuDensemble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListeItem.resx">
+      <DependentUpon>ListeItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
