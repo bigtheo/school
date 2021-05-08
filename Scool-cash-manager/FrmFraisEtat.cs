@@ -119,6 +119,7 @@ namespace Scool_cash_manager
 
         #endregion Affichages
 
+        #region impression exétat ou tenafep
         private void Imprimer()
         {
             #region Création du document
@@ -237,7 +238,7 @@ namespace Scool_cash_manager
         {
             Imprimer();
         }
-
+        #endregion
         private void Cbx_classe_SelectedIndexChanged(object sender, EventArgs e)
         {
             AfficherToutPaiementParClasse();
