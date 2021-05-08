@@ -117,12 +117,6 @@
     <Compile Include="frmAccueil.Designer.cs">
       <DependentUpon>frmAccueil.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmAnnulations.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmAnnulations.Designer.cs">
-      <DependentUpon>FrmAnnulations.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmApercuAvantImpression.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -341,9 +335,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAccueil.resx">
       <DependentUpon>frmAccueil.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmAnnulations.resx">
-      <DependentUpon>FrmAnnulations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmApercuAvantImpression.resx">
       <DependentUpon>FrmApercuAvantImpression.cs</DependentUpon>
