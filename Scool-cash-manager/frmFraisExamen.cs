@@ -20,6 +20,51 @@ namespace Scool_cash_manager
         {
             ListerJournal();
         }
+        private void ListerPaiementParClasse()
+        {
+            try
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    Connexion.connecter();
+                    cmd.Connection = Connexion.con;
+                    cmd.CommandText = "SELECT pe.id AS id,pe.date_paie AS 'Date et heure'," +
+                        "concat_ws(' ', e.nom, e.postnom, e.prenom) AS Noms, fe.designation AS 'Désignation', c.nom,cf.Montant AS Classe from eleve as e " +
+                        " INNER JOIN classe as c on c.id = e.classe_id " +
+                        " INNER JOIN paiement_examen as pe on pe.eleve_id = e.id " +
+                        " INNER JOIN frais_examen as fe on fe.id = pe.frais_examen_id " +
+                        " INNER JOIN classe_frais_examen as cf on fe.id=cf.frais_examen_id and c.id=cf.classe_id " +
+                        " WHERE c.nom = @classe";
+                    MySqlParameter p_classe = new MySqlParameter("@classe", MySqlDbType.VarChar)
+                    {
+                        Value = cbx_classe.Text
+                    };
+                    cmd.Parameters.Add(p_classe);
+
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        dgvliste.DataSource = table;
+                    }
+                    if (dgvliste.Rows.Count == 0)
+                    {
+                        dgvliste.Hide();
+                        lblMessage.Show();
+                    }
+                    else
+                    {
+                        dgvliste.Show();
+                        lblMessage.Hide();
+                    }
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void ListerJournal()
         {
             try
@@ -33,11 +78,11 @@ namespace Scool_cash_manager
                         " INNER JOIN classe as c on c.id = e.classe_id " +
                         " INNER JOIN paiement_examen as pe on pe.eleve_id = e.id " +
                         " INNER JOIN frais_examen as fe on fe.id = pe.frais_examen_id " +
-                        " INNER JOIN classe_frais_examen as cf on fe.id=cf.frais_examen_id " +
-                        " WHERE c.nom = @classe";
-                    MySqlParameter p_classe = new MySqlParameter("@classe", MySqlDbType.VarChar)
+                        " INNER JOIN classe_frais_examen as cf on fe.id=cf.frais_examen_id and c.id=cf.classe_id " +
+                        " WHERE date(pe.date_paie) = date(@date)";
+                    MySqlParameter p_classe = new MySqlParameter("@date", MySqlDbType.Date)
                     {
-                        Value = cbx_classe.Text
+                        Value = DateTime.Now.Date
                     };
                     cmd.Parameters.Add(p_classe);
 
@@ -112,7 +157,7 @@ namespace Scool_cash_manager
 
         private void cbx_classe_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListerJournal();
+            ListerPaiementParClasse();
         }
 
         private void btnImprimer_Click(object sender, EventArgs e)
