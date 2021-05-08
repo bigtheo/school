@@ -32,14 +32,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbx_classe = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAnnuler = new System.Windows.Forms.Button();
             this.btnImprimer = new System.Windows.Forms.Button();
             this.btnDetails = new System.Windows.Forms.Button();
             this.btnNouveau = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
             this.dgvliste = new System.Windows.Forms.DataGridView();
-            this.btnAnnuler = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvliste)).BeginInit();
@@ -48,6 +50,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.cbx_classe);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -55,6 +59,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(819, 37);
             this.panel1.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(577, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(132, 17);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Selectionner la classe";
+            // 
+            // cbx_classe
+            // 
+            this.cbx_classe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbx_classe.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbx_classe.FormattingEnabled = true;
+            this.cbx_classe.Location = new System.Drawing.Point(715, 6);
+            this.cbx_classe.Name = "cbx_classe";
+            this.cbx_classe.Size = new System.Drawing.Size(92, 25);
+            this.cbx_classe.TabIndex = 5;
+            this.cbx_classe.SelectedIndexChanged += new System.EventHandler(this.cbx_classe_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -80,6 +106,24 @@
             this.panel2.Size = new System.Drawing.Size(819, 51);
             this.panel2.TabIndex = 25;
             // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.btnAnnuler.Enabled = false;
+            this.btnAnnuler.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnAnnuler.FlatAppearance.BorderSize = 0;
+            this.btnAnnuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
+            this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnnuler.ForeColor = System.Drawing.Color.White;
+            this.btnAnnuler.Location = new System.Drawing.Point(317, 12);
+            this.btnAnnuler.MaximumSize = new System.Drawing.Size(127, 31);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(96, 26);
+            this.btnAnnuler.TabIndex = 30;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = false;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
+            // 
             // btnImprimer
             // 
             this.btnImprimer.BackColor = System.Drawing.Color.Black;
@@ -95,6 +139,7 @@
             this.btnImprimer.TabIndex = 3;
             this.btnImprimer.Text = "Imprimer";
             this.btnImprimer.UseVisualStyleBackColor = false;
+            this.btnImprimer.Click += new System.EventHandler(this.btnImprimer_Click);
             // 
             // btnDetails
             // 
@@ -181,25 +226,7 @@
             this.dgvliste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvliste.Size = new System.Drawing.Size(819, 485);
             this.dgvliste.TabIndex = 26;
-            this.dgvliste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvliste_CellContentClick);
-            // 
-            // btnAnnuler
-            // 
-            this.btnAnnuler.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.btnAnnuler.Enabled = false;
-            this.btnAnnuler.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnAnnuler.FlatAppearance.BorderSize = 0;
-            this.btnAnnuler.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
-            this.btnAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAnnuler.ForeColor = System.Drawing.Color.White;
-            this.btnAnnuler.Location = new System.Drawing.Point(317, 12);
-            this.btnAnnuler.MaximumSize = new System.Drawing.Size(127, 31);
-            this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(96, 26);
-            this.btnAnnuler.TabIndex = 30;
-            this.btnAnnuler.Text = "Annuler";
-            this.btnAnnuler.UseVisualStyleBackColor = false;
-            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
+            this.dgvliste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgvliste_CellContentClick);
             // 
             // frmFraisExamen
             // 
@@ -235,5 +262,7 @@
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.DataGridView dgvliste;
         private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbx_classe;
     }
 }

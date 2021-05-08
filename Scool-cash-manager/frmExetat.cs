@@ -1,12 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Scool_cash_manager
@@ -16,6 +10,8 @@ namespace Scool_cash_manager
         public frmExetat()
         {
             InitializeComponent();
+            Operations.ChargerClassesDansComboBox(cbx_classe);
+
         }
 
         private void BtnFermer_Click(object sender, EventArgs e)
@@ -24,28 +20,69 @@ namespace Scool_cash_manager
         }
 
         #region au chargement du formulaire
+
         private void ListerPaiement()
         {
-            Views.AfficherTout("v_paimentExetatJournalier", dgvliste);
-            if (dgvliste.Rows.Count == 0)
+            try
             {
-                dgvliste.Hide();
-                lblMessage.Show();
+                using (MySqlCommand cmd=new MySqlCommand ())
+                {
+                    Connexion.connecter();
+                    cmd.Connection = Connexion.con;
+                    cmd.CommandText = "SELECT pe.id AS id,pe.date_paie AS 'Date et heure'," +
+                        "concat_ws(' ', e.nom, e.postnom, e.prenom) AS Noms, fe.designation AS 'Désignation', c.nom AS Classe from eleve as e " +
+                        " INNER JOIN classe as c on c.id = e.classe_id " +
+                        " INNER JOIN paiement_exetat as pe on pe.eleve_id = e.id " +
+                        " INNER JOIN frais_exetat as fe on fe.id = pe.frais_exetat_id " +
+                        " WHERE c.nom = @classe";
+                    MySqlParameter p_classe = new MySqlParameter("@classe", MySqlDbType.VarChar) 
+                    { 
+                        Value=cbx_classe.Text
+                    };
+                    cmd.Parameters.Add(p_classe);
+
+                    using (MySqlDataAdapter adapter=new MySqlDataAdapter (cmd))
+                    {
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        dgvliste.DataSource = table;
+                    }
+                    if (dgvliste.Rows.Count == 0)
+                    {
+                        dgvliste.Hide();
+                        lblMessage.Show();
+                    }
+                    else
+                    {
+                        dgvliste.Show();
+                        lblMessage.Hide();
+                    }
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
+
         private void FrmExetat_Load(object sender, EventArgs e)
         {
-            ListerPaiement();   
+            ListerPaiement();
         }
-        #endregion
+
+        #endregion au chargement du formulaire
+
         private void BtnNouveau_Click(object sender, EventArgs e)
         {
-          new  frmNouveauPaiementExetat().ShowDialog();
+            new frmNouveauPaiementExetat().ShowDialog();
         }
+
         private bool DGVPossedeUnEnregistrement()
         {
             return dgvliste.Rows.Count > 0;
         }
+
         private void AnnulerPaiementExetat()
         {
             using (MySqlCommand cmd = new MySqlCommand())
@@ -66,12 +103,11 @@ namespace Scool_cash_manager
             }
         }
 
-        private void dgvliste_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Dgvliste_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (DGVPossedeUnEnregistrement())
             {
                 btnAnnuler.Enabled = true;
-
             }
             else
             {
@@ -83,6 +119,12 @@ namespace Scool_cash_manager
         {
             AnnulerPaiementExetat();
             ListerPaiement();
+        }
+
+        private void cbx_classe_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListerPaiement();
+
         }
     }
 }

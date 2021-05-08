@@ -29,8 +29,8 @@
     <PublisherName>kapapa</PublisherName>
     <SuiteName>cash-manager</SuiteName>
     <MinimumRequiredVersion>1.0.0.0</MinimumRequiredVersion>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -159,9 +159,7 @@
     <Compile Include="frmConfigFraisMensuel.Designer.cs">
       <DependentUpon>frmConfigFraisMensuel.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmConfigurationApplication.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FrmConfigurationApplication.cs" />
     <Compile Include="FrmConfigurationApplication.Designer.cs">
       <DependentUpon>FrmConfigurationApplication.cs</DependentUpon>
     </Compile>
@@ -327,6 +325,12 @@
     <Compile Include="FrmVuDensemble.Designer.cs">
       <DependentUpon>FrmVuDensemble.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListeItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListeItem.Designer.cs">
+      <DependentUpon>ListeItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations.cs" />
     <Compile Include="PDFBackgroundHelper.cs" />
     <Compile Include="Program.cs" />
@@ -442,6 +446,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmVuDensemble.resx">
       <DependentUpon>FrmVuDensemble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListeItem.resx">
+      <DependentUpon>ListeItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

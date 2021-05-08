@@ -87,7 +87,7 @@
             this.dgvliste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvliste.Size = new System.Drawing.Size(819, 477);
             this.dgvliste.TabIndex = 22;
-            this.dgvliste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvliste_CellContentClick);
+            this.dgvliste.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgvliste_CellContentClick);
             // 
             // panel2
             // 
@@ -168,11 +168,11 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(577, 13);
+            this.label2.Location = new System.Drawing.Point(586, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 17);
+            this.label2.Size = new System.Drawing.Size(123, 17);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Selectionner la classe";
+            this.label2.Text = "Selectionner la date";
             // 
             // panel1
             // 

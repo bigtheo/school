@@ -31,8 +31,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNouveauPaiementMensuel));
             this.panelBarreDeTitre = new System.Windows.Forms.Panel();
-            this.btnFermer = new System.Windows.Forms.Button();
+            this.txt_nom = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panelFormulaire = new System.Windows.Forms.Panel();
@@ -51,6 +52,8 @@
             this.lbl_frais_mensuel_id = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnEnregistrer = new System.Windows.Forms.Button();
+            this.layout_panel = new System.Windows.Forms.FlowLayoutPanel();
+            this.BtnRechercher = new System.Windows.Forms.Button();
             this.panelBarreDeTitre.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelFormulaire.SuspendLayout();
@@ -62,55 +65,52 @@
             // 
             // panelBarreDeTitre
             // 
-            this.panelBarreDeTitre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
-            this.panelBarreDeTitre.Controls.Add(this.btnFermer);
+            this.panelBarreDeTitre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(223)))), ((int)(((byte)(236)))));
+            this.panelBarreDeTitre.Controls.Add(this.BtnRechercher);
+            this.panelBarreDeTitre.Controls.Add(this.txt_nom);
             this.panelBarreDeTitre.Controls.Add(this.label1);
             this.panelBarreDeTitre.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBarreDeTitre.Location = new System.Drawing.Point(0, 0);
+            this.panelBarreDeTitre.Location = new System.Drawing.Point(432, 0);
             this.panelBarreDeTitre.Name = "panelBarreDeTitre";
-            this.panelBarreDeTitre.Size = new System.Drawing.Size(489, 37);
+            this.panelBarreDeTitre.Size = new System.Drawing.Size(508, 83);
             this.panelBarreDeTitre.TabIndex = 4;
             this.panelBarreDeTitre.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelBarreDeTitre_MouseDown);
             // 
-            // btnFermer
+            // txt_nom
             // 
-            this.btnFermer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFermer.FlatAppearance.BorderSize = 0;
-            this.btnFermer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFermer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFermer.ForeColor = System.Drawing.Color.White;
-            this.btnFermer.Location = new System.Drawing.Point(449, 5);
-            this.btnFermer.Name = "btnFermer";
-            this.btnFermer.Size = new System.Drawing.Size(28, 27);
-            this.btnFermer.TabIndex = 1;
-            this.btnFermer.Text = "x";
-            this.btnFermer.UseVisualStyleBackColor = true;
-            this.btnFermer.Click += new System.EventHandler(this.BtnFermer_Click);
+            this.txt_nom.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_nom.Location = new System.Drawing.Point(17, 30);
+            this.txt_nom.Name = "txt_nom";
+            this.txt_nom.Size = new System.Drawing.Size(388, 27);
+            this.txt_nom.TabIndex = 1;
+            this.txt_nom.TextChanged += new System.EventHandler(this.txt_nom_TextChanged);
+            this.txt_nom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_nom_KeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.label1.Location = new System.Drawing.Point(12, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 20);
+            this.label1.Size = new System.Drawing.Size(393, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Perception mensuelle";
+            this.label1.Text = "Saisissez le nom, postnom ou prénom pour rechercher";
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.panelFormulaire);
             this.panel2.Controls.Add(this.dgvliste);
             this.panel2.Controls.Add(this.lbl_designation);
             this.panel2.Controls.Add(this.lbl_frais_mensuel_id);
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(489, 458);
+            this.panel2.Size = new System.Drawing.Size(432, 502);
             this.panel2.TabIndex = 5;
             // 
             // panelFormulaire
@@ -125,9 +125,10 @@
             this.panelFormulaire.Controls.Add(this.label2);
             this.panelFormulaire.Controls.Add(this.txt_classe);
             this.panelFormulaire.Controls.Add(this.txt_noms);
-            this.panelFormulaire.Location = new System.Drawing.Point(17, 45);
+            this.panelFormulaire.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelFormulaire.Location = new System.Drawing.Point(0, 0);
             this.panelFormulaire.Name = "panelFormulaire";
-            this.panelFormulaire.Size = new System.Drawing.Size(445, 163);
+            this.panelFormulaire.Size = new System.Drawing.Size(432, 163);
             this.panelFormulaire.TabIndex = 40;
             // 
             // txt_frais_mensuel
@@ -135,7 +136,7 @@
             this.txt_frais_mensuel.Enabled = false;
             this.txt_frais_mensuel.Location = new System.Drawing.Point(121, 104);
             this.txt_frais_mensuel.Name = "txt_frais_mensuel";
-            this.txt_frais_mensuel.Size = new System.Drawing.Size(316, 23);
+            this.txt_frais_mensuel.Size = new System.Drawing.Size(305, 23);
             this.txt_frais_mensuel.TabIndex = 37;
             this.txt_frais_mensuel.TextChanged += new System.EventHandler(this.Txt_frais_mensuel_TextChanged);
             // 
@@ -156,7 +157,7 @@
             0,
             0});
             this.nupdown_montant.Name = "nupdown_montant";
-            this.nupdown_montant.Size = new System.Drawing.Size(316, 26);
+            this.nupdown_montant.Size = new System.Drawing.Size(305, 26);
             this.nupdown_montant.TabIndex = 36;
             this.nupdown_montant.ThousandsSeparator = true;
             // 
@@ -179,7 +180,7 @@
             0,
             0});
             this.nupdown_id.Name = "nupdown_id";
-            this.nupdown_id.Size = new System.Drawing.Size(316, 26);
+            this.nupdown_id.Size = new System.Drawing.Size(305, 26);
             this.nupdown_id.TabIndex = 34;
             this.nupdown_id.ValueChanged += new System.EventHandler(this.Nupdown_id_ValueChanged);
             // 
@@ -224,7 +225,7 @@
             this.txt_classe.Enabled = false;
             this.txt_classe.Location = new System.Drawing.Point(121, 75);
             this.txt_classe.Name = "txt_classe";
-            this.txt_classe.Size = new System.Drawing.Size(316, 23);
+            this.txt_classe.Size = new System.Drawing.Size(305, 23);
             this.txt_classe.TabIndex = 2;
             // 
             // txt_noms
@@ -232,7 +233,7 @@
             this.txt_noms.Enabled = false;
             this.txt_noms.Location = new System.Drawing.Point(121, 47);
             this.txt_noms.Name = "txt_noms";
-            this.txt_noms.Size = new System.Drawing.Size(316, 23);
+            this.txt_noms.Size = new System.Drawing.Size(305, 23);
             this.txt_noms.TabIndex = 1;
             // 
             // dgvliste
@@ -242,7 +243,7 @@
             this.dgvliste.AllowUserToOrderColumns = true;
             this.dgvliste.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvliste.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvliste.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.dgvliste.BackgroundColor = System.Drawing.Color.White;
             this.dgvliste.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvliste.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.RaisedHorizontal;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -264,7 +265,7 @@
             this.dgvliste.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvliste.EnableHeadersVisualStyles = false;
             this.dgvliste.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dgvliste.Location = new System.Drawing.Point(37, 214);
+            this.dgvliste.Location = new System.Drawing.Point(17, 169);
             this.dgvliste.MultiSelect = false;
             this.dgvliste.Name = "dgvliste";
             this.dgvliste.ReadOnly = true;
@@ -273,7 +274,7 @@
             this.dgvliste.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(3);
             this.dgvliste.RowTemplate.Height = 45;
             this.dgvliste.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvliste.Size = new System.Drawing.Size(440, 149);
+            this.dgvliste.Size = new System.Drawing.Size(409, 238);
             this.dgvliste.TabIndex = 39;
             // 
             // lbl_designation
@@ -281,7 +282,7 @@
             this.lbl_designation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_designation.AutoSize = true;
             this.lbl_designation.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_designation.Location = new System.Drawing.Point(53, 366);
+            this.lbl_designation.Location = new System.Drawing.Point(53, 410);
             this.lbl_designation.Name = "lbl_designation";
             this.lbl_designation.Size = new System.Drawing.Size(182, 21);
             this.lbl_designation.TabIndex = 38;
@@ -293,7 +294,7 @@
             this.lbl_frais_mensuel_id.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_frais_mensuel_id.AutoSize = true;
             this.lbl_frais_mensuel_id.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_frais_mensuel_id.Location = new System.Drawing.Point(19, 366);
+            this.lbl_frais_mensuel_id.Location = new System.Drawing.Point(19, 410);
             this.lbl_frais_mensuel_id.Name = "lbl_frais_mensuel_id";
             this.lbl_frais_mensuel_id.Size = new System.Drawing.Size(26, 21);
             this.lbl_frais_mensuel_id.TabIndex = 37;
@@ -302,12 +303,12 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(223)))), ((int)(((byte)(236)))));
             this.panel3.Controls.Add(this.btnEnregistrer);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 390);
+            this.panel3.Location = new System.Drawing.Point(0, 434);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(489, 68);
+            this.panel3.Size = new System.Drawing.Size(432, 68);
             this.panel3.TabIndex = 26;
             // 
             // btnEnregistrer
@@ -326,17 +327,45 @@
             this.btnEnregistrer.UseVisualStyleBackColor = false;
             this.btnEnregistrer.Click += new System.EventHandler(this.BtnEnregistrer_Click);
             // 
+            // layout_panel
+            // 
+            this.layout_panel.AutoScroll = true;
+            this.layout_panel.BackColor = System.Drawing.Color.White;
+            this.layout_panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layout_panel.Location = new System.Drawing.Point(432, 83);
+            this.layout_panel.Name = "layout_panel";
+            this.layout_panel.Size = new System.Drawing.Size(508, 419);
+            this.layout_panel.TabIndex = 6;
+            // 
+            // BtnRechercher
+            // 
+            this.BtnRechercher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(201)))));
+            this.BtnRechercher.FlatAppearance.BorderSize = 0;
+            this.BtnRechercher.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.BtnRechercher.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
+            this.BtnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnRechercher.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRechercher.ForeColor = System.Drawing.Color.White;
+            this.BtnRechercher.Location = new System.Drawing.Point(411, 30);
+            this.BtnRechercher.Name = "BtnRechercher";
+            this.BtnRechercher.Size = new System.Drawing.Size(42, 27);
+            this.BtnRechercher.TabIndex = 2;
+            this.BtnRechercher.Text = "Ok";
+            this.BtnRechercher.UseVisualStyleBackColor = false;
+            this.BtnRechercher.Click += new System.EventHandler(this.BtnRechercher_Click);
+            // 
             // frmNouveauPaiementMensuel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(489, 458);
+            this.ClientSize = new System.Drawing.Size(940, 502);
+            this.Controls.Add(this.layout_panel);
             this.Controls.Add(this.panelBarreDeTitre);
             this.Controls.Add(this.panel2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmNouveauPaiementMensuel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmNouveauPaiement";
+            this.Text = "Nouveau paiement mensuel";
             this.panelBarreDeTitre.ResumeLayout(false);
             this.panelBarreDeTitre.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -354,7 +383,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panelBarreDeTitre;
-        private System.Windows.Forms.Button btnFermer;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
@@ -373,5 +401,8 @@
         private System.Windows.Forms.DataGridView dgvliste;
         private System.Windows.Forms.Panel panelFormulaire;
         private System.Windows.Forms.TextBox txt_frais_mensuel;
+        private System.Windows.Forms.FlowLayoutPanel layout_panel;
+        private System.Windows.Forms.TextBox txt_nom;
+        private System.Windows.Forms.Button BtnRechercher;
     }
 }
