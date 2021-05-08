@@ -52,7 +52,7 @@
             // 
             // panel_color
             // 
-            this.panel_color.BackColor = System.Drawing.Color.Olive;
+            this.panel_color.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.panel_color.Controls.Add(this.pictureBox1);
             this.panel_color.Location = new System.Drawing.Point(3, 4);
             this.panel_color.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -73,6 +73,7 @@
             // lbl_section
             // 
             this.lbl_section.AutoSize = true;
+            this.lbl_section.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.lbl_section.Location = new System.Drawing.Point(96, 29);
             this.lbl_section.Name = "lbl_section";
             this.lbl_section.Size = new System.Drawing.Size(50, 17);
@@ -82,6 +83,7 @@
             // lbl_classe
             // 
             this.lbl_classe.AutoSize = true;
+            this.lbl_classe.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.lbl_classe.Location = new System.Drawing.Point(96, 48);
             this.lbl_classe.Name = "lbl_classe";
             this.lbl_classe.Size = new System.Drawing.Size(43, 17);

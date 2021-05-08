@@ -637,7 +637,25 @@ namespace Scool_cash_manager
 
         private void txt_nom_TextChanged(object sender, EventArgs e)
         {
+            
+        }
+
+        private void BtnRechercher_Click(object sender, EventArgs e)
+        {
             PopulateItem();
+        }
+
+        private void NextEnter(Keys key)
+        {
+            if (key == Keys.Enter)
+            {
+                PopulateItem();
+            }
+        }
+
+        private void txt_nom_KeyDown(object sender, KeyEventArgs e)
+        {
+            NextEnter(e.KeyCode);
         }
     }
 }

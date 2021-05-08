@@ -53,6 +53,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.layout_panel = new System.Windows.Forms.FlowLayoutPanel();
+            this.BtnRechercher = new System.Windows.Forms.Button();
             this.panelBarreDeTitre.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelFormulaire.SuspendLayout();
@@ -65,6 +66,7 @@
             // panelBarreDeTitre
             // 
             this.panelBarreDeTitre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(223)))), ((int)(((byte)(236)))));
+            this.panelBarreDeTitre.Controls.Add(this.BtnRechercher);
             this.panelBarreDeTitre.Controls.Add(this.txt_nom);
             this.panelBarreDeTitre.Controls.Add(this.label1);
             this.panelBarreDeTitre.Dock = System.Windows.Forms.DockStyle.Top;
@@ -76,12 +78,13 @@
             // 
             // txt_nom
             // 
-            this.txt_nom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_nom.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_nom.Location = new System.Drawing.Point(17, 30);
             this.txt_nom.Name = "txt_nom";
-            this.txt_nom.Size = new System.Drawing.Size(388, 24);
+            this.txt_nom.Size = new System.Drawing.Size(388, 27);
             this.txt_nom.TabIndex = 1;
             this.txt_nom.TextChanged += new System.EventHandler(this.txt_nom_TextChanged);
+            this.txt_nom.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_nom_KeyDown);
             // 
             // label1
             // 
@@ -334,6 +337,23 @@
             this.layout_panel.Size = new System.Drawing.Size(508, 419);
             this.layout_panel.TabIndex = 6;
             // 
+            // BtnRechercher
+            // 
+            this.BtnRechercher.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(101)))), ((int)(((byte)(201)))));
+            this.BtnRechercher.FlatAppearance.BorderSize = 0;
+            this.BtnRechercher.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
+            this.BtnRechercher.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(107)))), ((int)(((byte)(153)))));
+            this.BtnRechercher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnRechercher.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnRechercher.ForeColor = System.Drawing.Color.White;
+            this.BtnRechercher.Location = new System.Drawing.Point(411, 30);
+            this.BtnRechercher.Name = "BtnRechercher";
+            this.BtnRechercher.Size = new System.Drawing.Size(42, 27);
+            this.BtnRechercher.TabIndex = 2;
+            this.BtnRechercher.Text = "Ok";
+            this.BtnRechercher.UseVisualStyleBackColor = false;
+            this.BtnRechercher.Click += new System.EventHandler(this.BtnRechercher_Click);
+            // 
             // frmNouveauPaiementMensuel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,5 +403,6 @@
         private System.Windows.Forms.TextBox txt_frais_mensuel;
         private System.Windows.Forms.FlowLayoutPanel layout_panel;
         private System.Windows.Forms.TextBox txt_nom;
+        private System.Windows.Forms.Button BtnRechercher;
     }
 }
