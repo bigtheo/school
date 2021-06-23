@@ -1,2 +1,2 @@
 # school-cash-manager
-nouvea projet école
+nouveau projet école: gestion financière de la caisse.
