@@ -1,2 +1,2 @@
 # school-cash-manager
-nouveau projet école: gestion financière de la caisse.
+nouveau projet école: gestion financière de la caisse KILIMA.
