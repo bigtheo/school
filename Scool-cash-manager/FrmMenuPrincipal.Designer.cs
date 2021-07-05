@@ -33,6 +33,7 @@
             this.BtnEnseignat = new System.Windows.Forms.Button();
             this.btnParametre = new System.Windows.Forms.Button();
             this.panelSousMenuJournal = new System.Windows.Forms.Panel();
+            this.BtnAnnulations = new System.Windows.Forms.Button();
             this.BntEcheance = new System.Windows.Forms.Button();
             this.btnJournalFrais = new System.Windows.Forms.Button();
             this.btnJournalCentralise = new System.Windows.Forms.Button();
@@ -62,7 +63,6 @@
             this.panelLogo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelConteneur = new System.Windows.Forms.Panel();
-            this.BtnAnnulations = new System.Windows.Forms.Button();
             this.panelSlideMenu.SuspendLayout();
             this.panelSousMenuJournal.SuspendLayout();
             this.panelSousMenuSolvabilite.SuspendLayout();
@@ -148,6 +148,23 @@
             this.panelSousMenuJournal.Name = "panelSousMenuJournal";
             this.panelSousMenuJournal.Size = new System.Drawing.Size(223, 144);
             this.panelSousMenuJournal.TabIndex = 8;
+            // 
+            // BtnAnnulations
+            // 
+            this.BtnAnnulations.Dock = System.Windows.Forms.DockStyle.Top;
+            this.BtnAnnulations.FlatAppearance.BorderSize = 0;
+            this.BtnAnnulations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAnnulations.ForeColor = System.Drawing.Color.Black;
+            this.BtnAnnulations.Location = new System.Drawing.Point(0, 105);
+            this.BtnAnnulations.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnAnnulations.Name = "BtnAnnulations";
+            this.BtnAnnulations.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
+            this.BtnAnnulations.Size = new System.Drawing.Size(223, 35);
+            this.BtnAnnulations.TabIndex = 7;
+            this.BtnAnnulations.Text = "Annulations";
+            this.BtnAnnulations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnAnnulations.UseVisualStyleBackColor = true;
+            this.BtnAnnulations.Click += new System.EventHandler(this.BtnAnnulations_Click);
             // 
             // BntEcheance
             // 
@@ -634,24 +651,7 @@
             this.panelConteneur.Size = new System.Drawing.Size(819, 573);
             this.panelConteneur.TabIndex = 2;
             // 
-            // BtnAnnulations
-            // 
-            this.BtnAnnulations.Dock = System.Windows.Forms.DockStyle.Top;
-            this.BtnAnnulations.FlatAppearance.BorderSize = 0;
-            this.BtnAnnulations.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAnnulations.ForeColor = System.Drawing.Color.Black;
-            this.BtnAnnulations.Location = new System.Drawing.Point(0, 105);
-            this.BtnAnnulations.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnAnnulations.Name = "BtnAnnulations";
-            this.BtnAnnulations.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.BtnAnnulations.Size = new System.Drawing.Size(223, 35);
-            this.BtnAnnulations.TabIndex = 7;
-            this.BtnAnnulations.Text = "Annulations";
-            this.BtnAnnulations.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAnnulations.UseVisualStyleBackColor = true;
-            this.BtnAnnulations.Click += new System.EventHandler(this.BtnAnnulations_Click);
-            // 
-            // frmMenuPrincipal
+            // FrmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -662,8 +662,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(950, 500);
-            this.Name = "frmMenuPrincipal";
+            this.Name = "FrmMenuPrincipal";
             this.Text = "Menu Principal";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMenuPrincipal_FormClosing);
             this.panelSlideMenu.ResumeLayout(false);
             this.panelSousMenuJournal.ResumeLayout(false);
             this.panelSousMenuSolvabilite.ResumeLayout(false);

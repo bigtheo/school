@@ -241,5 +241,10 @@ namespace Scool_cash_manager
             OuvrirFormulaire(new FrmAnnulations());
             CacherSousMenu();
         }
+
+        private void FrmMenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
