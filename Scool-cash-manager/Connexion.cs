@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
-
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Scool_cash_manager
@@ -11,41 +12,23 @@ namespace Scool_cash_manager
         public static MySqlConnection con;
         public static string uid;
         public static string pwd;
+        public static string db;
 
         #region la méthode de connexion
+
         // la méthode qui permet l'ouverture de la connection
-        public static bool connecter() 
+        public static bool connecter()
         {
-            string serveur = frmLogin.serveur;
+            string serveur = "127.0.0.1";
+            pwd = "1993";
+            uid = "root";
+            db = frmLogin.DatabaseName;
+            string constring = "persistsecurityinfo=True; server=" + serveur + "; database="+ db + ";uid=" + uid + ";password=" + pwd + "";
+            con = new MySqlConnection(constring);
+            con.Open();
             try
             {
-                serveur = "127.0.0.1";
-                pwd = "1993";
-                uid = "root";
-                string constring = "persistsecurityinfo=True; server=" + serveur + "; database=school_cash_managerdb;uid=" + uid + ";password=" + pwd + "";
-                con = new MySqlConnection(constring);
-                con.Open();
-
-                //on excute la requette de verification
-                string password = frmLogin.password;
-                string login = frmLogin.login;
-                password = "1993";
-                login = "kapapa";
-                string sql = "select count(id) from users where password='" + password + "' and nom='" + login + "'";
-                MySqlCommand cmd = new MySqlCommand(sql, con);
-                MySqlDataReader dr = cmd.ExecuteReader();
-                int nbre = 0;
-                while (dr.Read())
-                {
-                    nbre = int.Parse((dr.GetString(0)));
-                }
-                dr.Dispose();
-                if (nbre == 1)
-                {
-                    return true;
-                }
-                else
-                    return false;
+                return true;
             }
             catch (MySqlException ex)
             {
@@ -60,7 +43,83 @@ namespace Scool_cash_manager
             }
         }
 
-        #endregion la méthode de connexion
+        //détermine si l'utilisateur est admin
+        public static bool IsAdmin(string username,string password)
+        {
+            try {
+                if (con.State != System.Data.ConnectionState.Open)
+                {
+                    connecter();
+                }
+                string sql = "select id from users where nom=@name and password=SHA1(@password) and role=1";
+                using (MySqlCommand cmd=new MySqlCommand (sql,con))
+                {
+                    MySqlParameter p_username = new MySqlParameter("@name", MySqlDbType.VarChar)
+                    {
+                        Value = username
+                    };
+                    MySqlParameter p_password = new MySqlParameter("@password", MySqlDbType.VarChar)
+                    {
+                        Value = password
+                    };
+                    cmd.Parameters.Add(p_username);
+                    cmd.Parameters.Add(p_password);
 
+                    int user_id = Convert.ToInt32(cmd.ExecuteScalar());
+                    if (user_id > 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return default;
+            }
+        } 
+   
+        //detrmine si l'utilisateur est autre que admin
+        public static bool IsOtherUser(string username,string password)
+        {
+            try
+            {
+                if (con.State != System.Data.ConnectionState.Open)
+                {
+                    connecter();
+                }
+
+                string sql = "select id from users where nom=@name and password=SHA1(@password) and role=2";
+                using (MySqlCommand cmd = new MySqlCommand(sql, con))
+                {
+                    MySqlParameter p_username = new MySqlParameter("@name", MySqlDbType.VarChar)
+                    {
+                        Value = username
+                    };
+                    MySqlParameter p_password = new MySqlParameter("@password", MySqlDbType.VarChar)
+                    {
+                        Value = password
+                    };
+                    cmd.Parameters.Add(p_username);
+                    cmd.Parameters.Add(p_password);
+
+                    int user_id = Convert.ToInt32(cmd.ExecuteScalar());
+                    if (user_id > 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return default;
+            }
+        }
+
+        
+        #endregion la méthode de connexion
     }
 }
